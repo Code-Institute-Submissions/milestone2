@@ -19,7 +19,7 @@ $(document).ready(function() {
         
         setTimeout(function() {
             $("#" + id).removeClass("colour-btn-light");
-        }, 300);
+        }, 400);
     }
     
     
@@ -51,9 +51,23 @@ $(document).ready(function() {
         // Random 'colour' selected and added to sequence
         getRandomNum();
         
-        // Each number 0 to 3 represents a colour that colour will light and play its sound
+        // TEST
+        console.log("Game Sequence - " + gameSequence);
         
-        alert("finished");
+        // Each number 0 to 3 represents a colour that colour will light and play its sound
+        index=0;
+        
+        var sequenceInterval = setInterval(function() {
+            var id = gameSequence[index];
+            lightUp(id);
+            index++;
+            
+            if(index == gameSequence.length) {
+                clearInterval(sequenceInterval);
+            }
+        }, 500);
+        
+        
     }
     
     
