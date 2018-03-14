@@ -39,11 +39,21 @@ $(document).ready(function() {
         }, 200);
     }
     
+    // Randon number from 1 to 3 added to game sequence
+    // This number is pushed into an array gameSequence[]
+    function getRandomNum() {
+        var randomNum = Math.floor(Math.random()*4);
+        gameSequence.push(randomNum);
+    }
+    
     
     function gameSequenceGen() {
-        // a number from 0 to 3 is chosen randonly
-        // This number is pushed into an array gameSequence[]
+        // Random 'colour' selected and added to sequence
+        getRandomNum();
+        
         // Each number 0 to 3 represents a colour that colour will light and play its sound
+        
+        alert("finished");
     }
     
     
@@ -72,7 +82,7 @@ $(document).ready(function() {
         score        = 0;
         gameSequence = [];
         userSequence = [];
-        gameSequenceGen();
+        setTimeout(gameSequenceGen, 5000);
     });
     
 });
