@@ -1,8 +1,42 @@
+$(window).on('load',function(){
+        $('#game-modal').modal('show');
+    });
+
+    
 $(document).ready(function() {
     
-    function gameStart() {
-        // When reset button is clicked the game will begin
-        // each colour will light in a sequence one after the other and then they will all flash together twice
+    var index        = 0;
+    var level        = 0;
+    var score        = 0;
+    var highScore    = 0;
+    var gameSequence = [];
+    var userSequence = [];
+    
+    
+    //Makes buttons light up
+    function lightUp(id) {
+        $("#" + id).addClass("colour-btn-light");
+        
+        setTimeout(function() {
+            $("#" + id).removeClass("colour-btn-light");
+        }, 300);
+    }
+    
+    
+    //Start Light Sequence
+    function startLightSequence() {
+        // each colour will light in a sequence one after the other
+        var startSequence = [0,1,3,2,0,1,3,2,0,1,3,2,0];
+        var sequenceInterval = setInterval(function() {
+            var id = startSequence[index];
+            lightUp(id);
+            index++;
+            
+            if(index == startSequence.length) {
+                clearInterval(sequenceInterval);
+            }
+            
+        }, 200);
     }
     
     
@@ -29,5 +63,16 @@ $(document).ready(function() {
         // All four colours flash together continuously until reset button is clicked
     }
     
+    
+    //When play or reset button clicked
+    $("#play, #reset").on("click", function() {
+        startLightSequence();
+        index        = 0;
+        level        = 0;
+        score        = 0;
+        gameSequence = [];
+        userSequence = [];
+        gameSequenceGen();
+    });
     
 });
