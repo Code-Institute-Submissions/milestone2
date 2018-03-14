@@ -30,35 +30,40 @@ header {
     position: relative;
     border: solid #404040;
     box-sizing: border-box;
+    opacity: 0.7;
 }
 
-#green {
-    background: radial-gradient(#048b3a, #02ca52);
-    background-color: #048b3a;
+.colour-btn-light {
+    opacity: 1;
+}
+
+.green {
+    background: radial-gradient(#0abd51, #1efa76);
+    background-color: #0abd51;
     border-radius: 100% 3% 3% 3%;
     border-width: 3vw 1.5vw 1.5vw 3vw;
 }
 
-#red {
-    background: radial-gradient(#850331, #b90041);
-    background-color: #850331;
+.red {
+    background: radial-gradient(#c6054a, #ec1963);
+    background-color: #c6054a;
     border-radius: 3% 100%3% 3%;
     border-width: 3vw 3vw 1.5vw 1.5vw;
     top: -44vw;
     left: 44vw;
 }
 
-#yellow {
-    background: radial-gradient(#a19f19, #d9d71f);
-    background-color: #a19f19;
+.yellow {
+    background: radial-gradient(#cac824, #f8f62b);
+    background-color: #cac824;
     border-radius: 3% 3% 3% 100%;
     border-width: 1.5vw 1.5vw 3vw 3vw;
     top: -44vw;
 }
 
-#blue {
-    background: radial-gradient(#196697, #1f8dd2);
-    background-color: #196697;
+.blue {
+    background: radial-gradient(#2481bd, #43b3fa);
+    background-color: #2481bd;
     border-radius: 3% 3% 100% 3%;
     border-width: 1.5vw 3vw 3vw 1.5vw;
     top: -88vw;
@@ -129,22 +134,22 @@ header {
         width: 35vh;
     }
 
-    #green {
+    .green {
         border-width: 2vh 1vh 1vh 2vh;
     }
     
-    #red {
+    .red {
         border-width: 2vh 2vh 1vh 1vh;
         top: -35vh;
         left: 35vh;
     }
     
-    #yellow {
+    .yellow {
         border-width: 1vh 1vh 2vh 2vh;
         top: -35vh;
     }
     
-    #blue {
+    .blue {
         border-width: 1vh 2vh 2vh 1vh;
         top: -70vh;
         left: 35vh;
@@ -193,4 +198,3 @@ header {
         font-size: 2.2em;
     }
 }
-
