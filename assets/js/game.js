@@ -11,6 +11,7 @@ $(document).ready(function() {
     var highScore    = 0;
     var gameSequence = [];
     var userSequence = [];
+    var isCorrect    = false;
     
     
     //Makes buttons light up
@@ -47,7 +48,25 @@ $(document).ready(function() {
     }
     
     
+    //Display Level
+    function displayLevel() {
+        if(level<10) {
+            $("#level").text("0" + level);
+        } else {
+            $("#level").text(level);
+        }
+    }
+
+    
+    
+    
     function gameSequenceGen() {
+        // level goes up by one
+        level++;
+        displayLevel();
+        //TEST
+        console.log("level - " + level);
+        
         // Random 'colour' selected and added to sequence
         getRandomNum();
         
@@ -65,26 +84,32 @@ $(document).ready(function() {
             if(index == gameSequence.length) {
                 clearInterval(sequenceInterval);
             }
-        }, 500);
-        
-        
+        }, 650);
     }
     
+    // When colour button clicked
+    $(".colour-btn").on("click", function() {
+       var id = $(this).attr("id");
+       userSequence.push(id);
+       lightUp(id);
+       
+       //TEST
+       console.log("User Sequence - " + userSequence);
+    });
     
-    function userSequenceGen() {
-        // The user press the colours in the same sequence as the game generated
-        // Each time he presses a colour, the number that corresponds to that colour is pushed into an array userSequence[]
-    }
+    
     
     function checkSequence() {
         // The userSequence and gameSequence are compared to each other
-        // if they match, gameSequenceGen() is triggered again and the whole thing is repeated
-        // if they don't match the game is ended andgameOver() is triggered
+        // if they match, return true
+        // if they don't match return false
     }
+    
     
     function gameOver() {
         // Game over sound plays
         // All four colours flash together continuously until reset button is clicked
+        alert("GAME OVER!!!");
     }
     
     
@@ -96,6 +121,7 @@ $(document).ready(function() {
         score        = 0;
         gameSequence = [];
         userSequence = [];
+        displayLevel();
         setTimeout(gameSequenceGen, 5000);
     });
     
