@@ -95,6 +95,14 @@ $(document).ready(function() {
        
        //TEST
        console.log("User Sequence - " + userSequence);
+       
+       if(!checkSequence()) {
+           gameOver();
+       } else if(userSequence.length == gameSequence.length) {
+           displayLevel();
+           userSequence = [];
+           setTimeout(gameSequenceGen, 800);
+       }
     });
     
     
