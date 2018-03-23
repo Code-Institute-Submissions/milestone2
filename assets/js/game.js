@@ -7,7 +7,6 @@ $(document).ready(function() {
     
     var index        = 0;
     var level        = 0;
-    var score        = 0;
     var highScore    = 0;
     var gameSequence = [];
     var userSequence = [];
@@ -35,8 +34,40 @@ $(document).ready(function() {
     }
     
     
+    //Display Level
+    function displayLevel() {
+        if(level<10) {
+            $("#level, #score").text("0" + level);
+        } else {
+            $("#level, #score").text(level);
+        }
+    }
+    
+    
+    //Display High Score
+    function displayHighScore() {
+        if(level > highScore) {
+            highScore = level;
+            if(level<10) {
+                $("#highScore").text("0" + level);
+            } else {
+                $("#highScore").text(level);
+            }
+        }
+    }
+    
+    
     
     //Game Over Sequence
+    function gameOver() {
+        var gameOverInterval = setInterval(function() {
+            $(".colour-btn").toggleClass("colour-btn-light");
+            
+            if(resetClicked) {
+                clearInterval(gameOverInterval);
+            }
+        }, 400);
+    }
     
     
     //Start Light Sequence
@@ -68,25 +99,15 @@ $(document).ready(function() {
         var randomNum = Math.floor(Math.random()*4);
         gameSequence.push(randomNum);
     }
-    
-    
-    
-    //Display Level
-    function displayLevel() {
-        if(level<10) {
-            $("#level").text("0" + level);
-        } else {
-            $("#level").text(level);
-        }
-    }
 
-    
     
     function gameSequenceGen() {
         // level goes up by one
         resetClicked = false;
         level++;
         displayLevel();
+        displayHighScore();
+        console.log("high score - " + highScore);
         //TEST
         console.log("level - " + level);
         
@@ -129,7 +150,7 @@ $(document).ready(function() {
        console.log("User Sequence - " + userSequence);
        
        if(!checkSequence()) {
-           gameOver();
+          return gameOver();
        } else if(userSequence.length == gameSequence.length) {
            displayLevel();
            userSequence = [];
@@ -152,12 +173,6 @@ $(document).ready(function() {
     }
     
     
-    function gameOver() {
-        // Game over sound plays
-        // All four colours flash together continuously until reset button is clicked
-        alert("GAME OVER!!!");
-    }
-    
     
     //When play or reset button clicked
     $("#play, #reset").on("click", function() {
@@ -166,7 +181,6 @@ $(document).ready(function() {
         console.log("Start Sequence Finished");
         index        = 0;
         level        = 0;
-        score        = 0;
         gameSequence = [];
         userSequence = [];
         displayLevel();
