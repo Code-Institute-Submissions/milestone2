@@ -142,8 +142,8 @@ $(document).ready(function() {
          
         setTimeout(function sequenceInterval() {
             var id = gameSequence[index];
-                playColourSounds(id);
                 lightUp(id);
+                playColourSounds(id);
                 index++;
                 
                 console.log("Index - " + index);
