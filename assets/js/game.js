@@ -12,14 +12,21 @@ $(document).ready(function() {
     var userSequence = [];
     var resetClicked = false;
     
-    
-    //Disables Reset Button
-    function resetDisabled() {
-        $("#reset").prop("disabled", true);
+    //Sounds
+    var startSound = new Audio("assets/sounds/gameStart.wav");
+    var endSound = new Audio("assets/sounds/gameOver.wav");
+    var colourSounds = [
+        "assets/sounds/colour1.wav",
+        "assets/sounds/colour2.wav",
+        "assets/sounds/colour3.wav",
+        "assets/sounds/colour4.wav"
+        ];
         
-        setTimeout(function() {
-            $("#reset").prop("disabled", false);
-        }, 5000);
+        
+    //To play colour sounds
+    function playColourSounds(id) {
+        var sound = new Audio(colourSounds[id]);
+        sound.play();
     }
     
     
@@ -32,6 +39,18 @@ $(document).ready(function() {
             $("#" + id).removeClass("colour-btn-light");
         }, 400);
     }
+    
+    
+    
+    //Disables Reset Button
+    function resetDisabled() {
+        $("#reset").prop("disabled", true);
+        
+        setTimeout(function() {
+            $("#reset").prop("disabled", false);
+        }, 5000);
+    }
+
     
     
     //Display Level
@@ -60,6 +79,7 @@ $(document).ready(function() {
     
     //Game Over Sequence
     function gameOver() {
+        endSound.play();
         var gameOverInterval = setInterval(function() {
             $(".colour-btn").toggleClass("colour-btn-light");
             
@@ -122,6 +142,7 @@ $(document).ready(function() {
          
         setTimeout(function sequenceInterval() {
             var id = gameSequence[index];
+                playColourSounds(id);
                 lightUp(id);
                 index++;
                 
@@ -145,6 +166,7 @@ $(document).ready(function() {
        var id = $(this).attr("id");
        userSequence.push(id);
        lightUp(id);
+       playColourSounds(id);
        
        //TEST
        console.log("User Sequence - " + userSequence);
@@ -178,6 +200,7 @@ $(document).ready(function() {
     $("#play, #reset").on("click", function() {
         resetClicked = true; 
         startLightSequence();
+        startSound.play();
         console.log("Start Sequence Finished");
         index        = 0;
         level        = 0;
