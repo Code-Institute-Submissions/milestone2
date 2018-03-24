@@ -13,13 +13,13 @@ $(document).ready(function() {
     var resetClicked = false;
     
     //Sounds
-    var startSound = new Audio("assets/sounds/gameStart.wav");
-    var endSound = new Audio("assets/sounds/gameOver.wav");
+    var startSound = new Audio("assets/sounds/gameStart.mp3");
+    var endSound = new Audio("assets/sounds/gameOver.mp3");
     var colourSounds = [
-        "assets/sounds/colour1.wav",
-        "assets/sounds/colour2.wav",
-        "assets/sounds/colour3.wav",
-        "assets/sounds/colour4.wav"
+        "assets/sounds/colour1.mp3",
+        "assets/sounds/colour2.mp3",
+        "assets/sounds/colour3.mp3",
+        "assets/sounds/colour4.mp3"
         ];
         
         
