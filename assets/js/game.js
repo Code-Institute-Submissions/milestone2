@@ -139,26 +139,25 @@ $(document).ready(function() {
         
         // Each number 0 to 3 represents a colour that colour will light and play its sound
         index=0;
-         
-        setTimeout(function sequenceInterval() {
-            var id = gameSequence[index];
+        
+        
+        
+            setTimeout(function sequenceInterval() {
+                var id = gameSequence[index];
                 lightUp(id);
                 playColourSounds(id);
                 index++;
-                
                 console.log("Index - " + index);
             
-            if(index == gameSequence.length) {
+                if(index == gameSequence.length) {
+                    return clearTimeout(sequenceInterval);
+                } else if( resetClicked ) {
                 return clearTimeout(sequenceInterval);
-            } else if( resetClicked ) {
-               return clearTimeout(sequenceInterval);
-            }
+                }
                 
-            setTimeout(sequenceInterval, 650);
+                setTimeout(sequenceInterval, 650);
            
-        }, 650);
-        
-        
+            }, 650);
     }
     
     // When colour button clicked
