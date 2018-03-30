@@ -10,6 +10,11 @@ header {
     color: white;
 }
 
+.scores button {
+    position: relative;
+    top: 20px;
+}
+
 
 #main {
     margin-top: 7vh;
