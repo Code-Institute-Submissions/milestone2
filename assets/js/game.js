@@ -99,8 +99,6 @@ $(document).ready(function() {
             var id = startSequence[index];
                 lightUp(id);
                 index++;
-                
-                console.log("Index - " + index);
             
             if(index == startSequence.length) {
                 return clearTimeout(startSequenceInterval);
@@ -127,15 +125,10 @@ $(document).ready(function() {
         level++;
         displayLevel();
         displayHighScore();
-        console.log("high score - " + highScore);
-        //TEST
-        console.log("level - " + level);
         
         // Random 'colour' selected and added to sequence
         getRandomNum();
         
-        // TEST
-        console.log("Game Sequence - " + gameSequence);
         
         // Each number 0 to 3 represents a colour that colour will light and play its sound
         index=0;
@@ -147,7 +140,6 @@ $(document).ready(function() {
                 lightUp(id);
                 playColourSounds(id);
                 index++;
-                console.log("Index - " + index);
             
                 if(index == gameSequence.length) {
                     return clearTimeout(sequenceInterval);
@@ -166,9 +158,6 @@ $(document).ready(function() {
        userSequence.push(id);
        lightUp(id);
        playColourSounds(id);
-       
-       //TEST
-       console.log("User Sequence - " + userSequence);
        
        if(!checkSequence()) {
           return gameOver();
@@ -200,7 +189,6 @@ $(document).ready(function() {
         resetClicked = true; 
         startLightSequence();
         startSound.play();
-        console.log("Start Sequence Finished");
         index        = 0;
         level        = 0;
         gameSequence = [];
