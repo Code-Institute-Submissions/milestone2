@@ -6,9 +6,20 @@ Phil Surgenor - Milestone Project 2
 ## Interactive Frontend Development
 [visit the project website here](https://philsurgenor.github.io/milestone2/)
 
-For this project, I decided to build the game Simon. Using HTLM, CSS and Javascript / jQuery. 
+For this project, I was tasked to build a memory game. I decided to bulid a replica of the Simon memory game.
+The game originated in the 80s as a physical game. The premise of the game is very simple. Simon lights up a colour and you press the same one. Simon then adds a colour to the sequence each time. You must complete the sequence in order to move up a level.
 
-This game originated in the 80s as a physical game. The premise of the game is very simple. Simon lights up a colour and you press the same one. Simon then add a colour to the sequence each time. You must complete the sequence in order to move up a level.
+This game is a good way to pass the time and have a bit of fun.
+
+<br>
+
+## UX
+
+It was important to me that the UI replicate the physical game as closely as possible. I wanted the game to be comfortable to play on many devices. You can see from the wireframes I made sure all the components needed where added at this stage. I had to use various media queries to make sure the game looked right on mobile and tablet, both in landscape and portrait and on desktop.
+
+It was important that the coloured buttons gave feedback to the user, both by lighting up and making a sound. Unfortunately many mobile browsers disable autoplay audio. I would have to do more research to see if there is some sort of javascript library that can stop this from happening. This could be done in a future development stage.
+
+A modal appears when you first land on the game page. This was a conscience decision I made early on as it give the user access to the instructions immediately. For those that know how to play, the play game button is clearly visible, so there isn't a lot of user journey friction.
 
 <br>
 
@@ -25,13 +36,13 @@ This game originated in the 80s as a physical game. The premise of the game is v
 
 #### Balsamiq Mockups
 
-I created a simple wireframe to lay out the game and it's components. The game must be as responsive as possible, so I used both a phone and a tablet in the mockup.
+I created a simple wireframe to lay out the game and it's components. The game must be as responsive as possible, so I used both a phone and a tablet wireframes in the mockup.
 
 <br>
 
 #### HTML 5
 
-The HTML markup wasn't very compicated. The main thing was to clearly mark each component by either using an Id or a class. This was to make manipulating these with Javascript easier.
+The HTML markup wasn't very compicated. The main thing was to clearly mark each component by either using an Id or a class. This was to make manipulating them with Javascript easier.
 
 I used the \<audio> tag with the autoplay and muted attributes so that the sound for the game would be preloaded and stored in the browser's cache.
 
@@ -39,7 +50,7 @@ I used the \<audio> tag with the autoplay and muted attributes so that the sound
 
 #### CSS 3
 
-After I had styled all the components and constructed the UI for the game, the trickiest part was to make it responsive. I had to use a very wide range of media queries to make this possible.
+I wanted to make all the components for the game purley from CSS. After I had styled all the components and constructed the UI for the game, the trickiest part was to make it responsive. I had to use a very wide range of media queries to make this possible.
 
 <br>
 
@@ -51,21 +62,25 @@ I used this for its mobile first approach and made use of the modal capabilities
 
 #### Javascript / jQuery
 
-The logic behind the game is built with javascript. I have commented the code to make it easier to follow.
+The 'brains' behind the project are made with javascript. I made use of the jQuery library throughout. I have commented the code to make it easier to follow.
 
 <br>
 
 ## Testing
 
-#### Human Testing
+#### Manual Testing
 
-The main tests that were carried out were by hands on use of the game. The first test was to make sure the game looked the same across multiple devices. This was achieved with Chrome's developer tools.
+The main tests that were carried out were by physically using the game. The first test was to make sure the game looked the same across multiple devices. This was achieved with Chrome's developer tools, and using my phone and tablet to access the game.
 
 After each part of functionality was built it was tested by playing the game. I came across a problem at first when I used setInterval. As setInterval fires at the given interval wether the function has preformed or not, this became a problem when the colours lit up too quickly or not at all. I fixed this by using a recursive setTimeout instead as it was more reliable.
+
+I tested the scoring, making sure every level I went up,the score also moved in the correct increment.
 
 Another problem I had was when the reset button was pressed during the startSequence setTimeout loop or the gameSequence setTimeout loop. After each interval the index variable was set to go up by one each time until it had reached the same length as the sequence. If the reset button was pressed during this time the index would keep going up by one forever, this caused the game to behave erratically. To fix this problem I disabled the reset button during the startSequence and added an else if clause to the gameSequence setTimeout loop.
 
 One other problem I have not been able to solve is most browsers on mobile disable autoplay. This means when you play the game on a mobile device the sounds play when you click a button, or there is user interaction, but they will not play on their own. As Simon is playing the gameSequence, there is no sound.
+
+Other tesing included, checking all links worked correctly and making sure it worked in other major browsers.
 
 <br>
 
@@ -73,3 +88,21 @@ One other problem I have not been able to solve is most browsers on mobile disab
 
 One thing a wanted to test automatically was wether the checkSequence function would preform correctly every time. Instead of having to play the game until you reached level 30 to see if the game still preformed as it should, I used Jasmine to preform a simple unit test. You will find this test in the repository. In this test you can enter a sequence as long as you like and test wether the checkSequence function return true or false.
 
+<br>
+
+#### HTML Validator
+
+
+
+<br>
+
+#### CSS Validator
+
+
+
+<br>
+
+## Deployment
+Once I was confident I had all the files, html, css, js, audio together and that the folder structure was correct. I did one final test in my development environment.
+
+To deploy this site to GitHub Pages, I made sure all my files were pushed to this GitHub repository. I then selected settings, found the GitHub Pages section, made sure the source was the master branch and saved it. I then tested the site again to make sure it worked exactly as it did in the development stage.
