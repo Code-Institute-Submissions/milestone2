@@ -62,7 +62,7 @@ I used this for its mobile first approach and made use of the modal capabilities
 
 #### Javascript / jQuery
 
-The 'brains' behind the project are made with javascript. I made use of the jQuery library throughout. I have commented the code to make it easier to follow.
+The logic for this project was written in javascript. I made use of the jQuery library throughout. I have commented the code to make it easier to follow.
 
 <br>
 
@@ -70,13 +70,13 @@ The 'brains' behind the project are made with javascript. I made use of the jQue
 
 #### Manual Testing
 
-The main tests that were carried out were by physically using the game. The first test was to make sure the game looked the same across multiple devices. This was achieved with Chrome's developer tools, and using my phone and tablet to access the game.
+The main tests that were carried out were by physically using the game. The first test was to make sure the game looked the same across multiple devices. This was achieved with Chrome's developer tools, and using my phone and tablet to access the game. I had to add media queries to the css for device widths and in some cases the device orientation (portrait / landscape).
 
-After each part of functionality was built it was tested by playing the game. I came across a problem at first when I used setInterval. As setInterval fires at the given interval wether the function has preformed or not, this became a problem when the colours lit up too quickly or not at all. I fixed this by using a recursive setTimeout instead as it was more reliable.
+After each part of functionality was built it was tested by playing the game. I came across a problem at first when I used setInterval in gameSequenceGen. As setInterval fires at the given interval wether the function has preformed or not, this became a problem when the colours lit up too quickly or not at all. I fixed this by using a recursive setTimeout instead as it was more reliable.
 
-I tested the scoring, making sure every level I went up,the score also moved in the correct increment.
+I tested the scoring, making sure every level I went up,the score also moved in the correct increment. To make the level display corectly, I added a simple if statement to check wether the level was greater than 10, if it wasn't then a '0' was palce before the level number. This made the display look more like the physical LED counters on the real game. 
 
-Another problem I had was when the reset button was pressed during the startSequence setTimeout loop or the gameSequence setTimeout loop. After each interval the index variable was set to go up by one each time until it had reached the same length as the sequence. If the reset button was pressed during this time the index would keep going up by one forever, this caused the game to behave erratically. To fix this problem I disabled the reset button during the startSequence and added an else if clause to the gameSequence setTimeout loop.
+Another problem I had was when the reset button was pressed during the startSequence setTimeout loop or the gameSequence setTimeout loop. After each interval the index variable was set to go up by one each time until it had reached the same length as the sequence. If the reset button was pressed during this time the index would keep going up by one forever, this caused the game to behave erratically. To fix this problem I disabled the reset button during the startSequence and added an 'else if' clause to the gameSequence setTimeout loop.
 
 One other problem I have not been able to solve is most browsers on mobile disable autoplay. This means when you play the game on a mobile device the sounds play when you click a button, or there is user interaction, but they will not play on their own. As Simon is playing the gameSequence, there is no sound.
 
@@ -88,17 +88,104 @@ Other tesing included, checking all links worked correctly and making sure it wo
 
 One thing a wanted to test automatically was wether the checkSequence function would preform correctly every time. Instead of having to play the game until you reached level 30 to see if the game still preformed as it should, I used Jasmine to preform a simple unit test. You will find this test in the repository. In this test you can enter a sequence as long as you like and test wether the checkSequence function return true or false.
 
+#### JS Lint
+
+I used this to test that my javascript was valid. Below are the warnings I recieved:
+
+    9.24 Use double quotes, not single quotes.
+    $(window).on('load', function() {
+    
+    9.21 This function needs a "use strict" pragma.
+    $(window).on('load', function() {
+    (using "use strict" caused a bug)
+    
+    10.5 Use double quotes, not single quotes.
+      $('#game-modal').modal('show');
+      
+    10.26 Use double quotes, not single quotes.
+      $('#game-modal').modal('show');
+      
+    14.18 This function needs a "use strict" pragma.
+    $(document).ready(function() {
+    (using "use strict" caused a bug)
+    
+    24.23 Undeclared 'Audio'.
+      var startSound = new Audio("assets/sounds/gameStart.mp3");
+      (not fixed but works)
+      
+    25.21 Undeclared 'Audio'.
+      var endSound = new Audio("assets/sounds/gameOver.mp3");
+      (not fixed but works)
+      
+    41.20 Undeclared 'Audio'.
+        var sound = new Audio(colourSounds[id]);
+        (not fixed but works)
+        
+    116.11 Unexpected expression '++' in statement position.
+          index++;
+          (++ is still valid)
+          
+    118.16 Expected '===' and instead saw '=='.
+          if (index == startSequence.length) {
+          
+    135.1 Unexpected trailing space.
+      
+    136.1 Unexpected trailing space.
+      
+    145.9 Unexpected expression '++' in statement position.
+        level++;
+        (++ is still valid)
+        
+    152.3 Unexpected trailing space.
+        
+    164.11 Unexpected expression '++' in statement position.
+          index++;
+          (++ is still valid)
+          
+    166.16 Expected '===' and instead saw '=='.
+          if (index == gameSequence.length) {
+          
+    169.6 Unexpected 'else'.
+          else if (resetClicked) {
+          
+    177.1 Unexpected trailing space.
+        
+    190.33 Expected '===' and instead saw '=='.
+        else if (userSequence.length == gameSequence.length) {
+        
+    203.42 Expected '+= 1' and instead saw '++'.
+        for (i = 0; i < userSequence.length; i++) {
+          
+    204.26 Expected '!==' and instead saw '!='.
+          if (userSequence[i] != gameSequence[i]) {
+          
+    230.73 Unexpected trailing space.
+        /*  The resetDisabled function is used to stop the user from clicking 
+        
+    235.3Unexpected trailing space.
+    
+I corrected most of them. After some research, using ++ is still valid, so I left it as is.
+Using the "use strict pragma" caused a bug so  left it as is
+
 <br>
 
 #### HTML Validator
 
+I recieved two warnings using W3C validator.
 
+The type attribute is unnecessary for JavaScript resources.
+From line 12, column 5; to line 12, column 59
+
+Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.
+From line 43, column 5; to line 43, column 23
+
+I corrected the javascript warning, I didn't need a heading in the sepcified section.
 
 <br>
 
 #### CSS Validator
 
-
+After putting the code through the validator, there were a number of warnings and errors that came from bootstrap, but my stylesheet was fine
 
 <br>
 

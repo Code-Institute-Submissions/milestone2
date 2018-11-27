@@ -7,8 +7,9 @@ button is still easily accessable.
 The second thig the modal does is give a natural way to start playing the game. Instead of the game
 just starting on load or the user having to find another start button within the UI, pressing the 'Play Game'
 button lets the user stay in control. */
-$(window).on('load', function() {
-  $('#game-modal').modal('show');
+$(window).on("load", function() {
+
+  $("#game-modal").modal("show");
 });
 
 
@@ -22,6 +23,7 @@ $(document).ready(function() {
   var resetClicked = false;
 
   //Sounds
+  //  'new Audio adds HTML audio element'
   var startSound = new Audio("assets/sounds/gameStart.mp3");
   var endSound = new Audio("assets/sounds/gameOver.mp3");
   var colourSounds = [
