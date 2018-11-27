@@ -193,3 +193,8 @@ After putting the code through the validator, there were a number of warnings an
 Once I was confident I had all the files, html, css, js, audio together and that the folder structure was correct. I did one final test in my development environment.
 
 To deploy this site to GitHub Pages, I made sure all my files were pushed to this GitHub repository. I then selected settings, found the GitHub Pages section, made sure the source was the master branch and saved it. I then tested the site again to make sure it worked exactly as it did in the development stage.
+
+<br>
+
+## Credits
+The sounds for the game were taken from a video on youtube of someone demonstrating the physical game
