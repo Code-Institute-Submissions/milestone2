@@ -2,112 +2,126 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Simon - The Interactive Game</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="assets/js/game.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Simon - The Interactive Game</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="assets/js/game.js"></script>
 </head>
 
 <body>
 
-    <header>
-        <div class="container">
-            <div class="simon-name row text-center">
-                <div class="col-12">
-                    <h1>SIMON<small>&reg;</small></h1>
-                </div>
-            </div><!-- row -->
-                
-            <div class="scores row text-center">
-                <div class="col-4">
-                    <p>YOUR SCORE</p>
-                    <p id="score">00</p>
-                </div>
-                
-                <div class="col-4">
-                    <button class="btn btn-info btn-sm mx-auto" type="button" data-toggle="modal" data-target="#game-modal">Instructions</button>
-                </div>
-                    
-                <div class="col-4">
-                    <p>HIGH SCORE</p>
-                    <p id="highScore">00</p>
-                </div>
-            </div><!-- row -->
-        </div><!-- container -->
-    </header>
-    
-    <section id="main">
-        <div class="container">
-            <div class="row">
-                <div class="game-body">
-                    
-                    <div class="colour-btn green" id="0"></div>
-                    
-                    <div class="colour-btn red" id="1"></div>
-                    
-                    <div class="colour-btn yellow" id="2"></div>
-                    
-                    <div class="colour-btn blue" id="3"></div>
-                    
-                    <div class="game-center">
-                        <button class="btn btn-danger" id="reset">RESET</button>
-                        <p><span id="level">00</span></p>
-                    </div>
-                    
-                </div><!-- game-body -->
-            </div><!-- row -->
-        </div><!-- container -->
-    </section>
+  <header>
+    <div class="container">
+      <div class="simon-name row text-center">
+        <div class="col-12">
+          <h1>SIMON<small>&reg;</small></h1>
+        </div>
+      </div>
+      <!-- row -->
 
- <!-- contact-modal -->
-    <div class="modal fade" id="game-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Simon -<br> The Interactive Memory Game</h3>
-                    
-                    
-                </div><!-- modal-header -->
-                
-                <div class="modal-body">
-                   <h4>How to play:</h4>
-                   
-                   <p>1- When the game starts Simon will play a tune and the lights will flash in sequence, this signals the game has started.</p>
-                   <p>2- The level indicator in the middle will change to 01 an Simon will light up one colour.</p>
-                   <p>3- You must click on the same colour to progress.</p>
-                   <p>4- Simon will then add another colour to the previous sequence.</p>
-                   <p>5- You will repeat this sequence by clicking the colours in the correct order.</p>
-                   <p>6- Each time you get a sequence correct the levels will go up and Simon will continue to add more and more colours to the sequence.</p>
-                   <p>7- The game will end when you incorrectly guess the sequence. The is indicated by all the colours flashing and the game over sound.</p>
-                   <p>8- Press Reset to start a new game.</p>
-                   <p>9- Try to Beat your High Score!!</p>
-                   <p>10- Press PLAY GAME to begin, Have Fun!!</p>
-                </div><!-- modal-body -->
-          
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="play" data-dismiss="modal">Play Game</button>
-                </div><!-- modal-footer -->
-            </div><!-- modal-content -->
-        </div><!-- modal-dialogue -->
-    </div><!-- contact-modal -->
-    
-    
-    <audio src="assets/sounds/gameStart.mp3" preload class="d-none"></audio>
-    <audio src="assets/sounds/colour1.mp3" autoplay muted class="d-none"></audio>
-    <audio src="assets/sounds/colour2.mp3" autoplay muted class="d-none"></audio>
-    <audio src="assets/sounds/colour3.mp3" autoplay muted class="d-none"></audio>
-    <audio src="assets/sounds/colour4.mp3" autoplay muted class="d-none"></audio>
-    <audio src="assets/sounds/gameOver.mp3" preload class="d-none"></audio>
-    
-    
+      <div class="scores row text-center">
+        <div class="col-4">
+          <p>YOUR SCORE</p>
+          <p id="score">00</p>
+        </div>
 
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <div class="col-4">
+          <button class="btn btn-info btn-sm mx-auto" type="button" data-toggle="modal" data-target="#game-modal">Instructions</button>
+        </div>
+
+        <div class="col-4">
+          <p>HIGH SCORE</p>
+          <p id="highScore">00</p>
+        </div>
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </header>
+
+  <section id="main">
+    <div class="container">
+      <div class="row">
+        <div class="game-body">
+
+          <div class="colour-btn green" id="0"></div>
+
+          <div class="colour-btn red" id="1"></div>
+
+          <div class="colour-btn yellow" id="2"></div>
+
+          <div class="colour-btn blue" id="3"></div>
+
+          <div class="game-center">
+            <button class="btn btn-danger" id="reset">RESET</button>
+            <p><span id="level">00</span></p>
+          </div>
+
+        </div>
+        <!-- game-body -->
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </section>
+
+  <!-- contact-modal -->
+  <div class="modal fade" id="game-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Simon -<br> The Interactive Memory Game</h3>
+
+
+        </div>
+        <!-- modal-header -->
+
+        <div class="modal-body">
+          <h4>How to play:</h4>
+
+          <p>1- When the game starts Simon will play a tune and the lights will flash in sequence, this signals the game has started.</p>
+          <p>2- The level indicator in the middle will change to 01 an Simon will light up one colour.</p>
+          <p>3- You must click on the same colour to progress.</p>
+          <p>4- Simon will then add another colour to the previous sequence.</p>
+          <p>5- You will repeat this sequence by clicking the colours in the correct order.</p>
+          <p>6- Each time you get a sequence correct the levels will go up and Simon will continue to add more and more colours to the sequence.</p>
+          <p>7- The game will end when you incorrectly guess the sequence. The is indicated by all the colours flashing and the game over sound.</p>
+          <p>8- Press Reset to start a new game.</p>
+          <p>9- Try to Beat your High Score!!</p>
+          <p>10- Press PLAY GAME to begin, Have Fun!!</p>
+        </div>
+        <!-- modal-body -->
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="play" data-dismiss="modal">Play Game</button>
+        </div>
+        <!-- modal-footer -->
+      </div>
+      <!-- modal-content -->
+    </div>
+    <!-- modal-dialogue -->
+  </div>
+  <!-- contact-modal -->
+
+<!-- The Sounds are loaded and autoplayed whilst muted when the page loads
+The reason for this is to have the audio downloaded and in memory before it is needed. This means it will fire as needed,
+without having to wait until it is loaded.-->
+  <audio src="assets/sounds/gameStart.mp3" preload class="d-none"></audio>
+  <audio src="assets/sounds/colour1.mp3" autoplay muted class="d-none"></audio>
+  <audio src="assets/sounds/colour2.mp3" autoplay muted class="d-none"></audio>
+  <audio src="assets/sounds/colour3.mp3" autoplay muted class="d-none"></audio>
+  <audio src="assets/sounds/colour4.mp3" autoplay muted class="d-none"></audio>
+  <audio src="assets/sounds/gameOver.mp3" preload class="d-none"></audio>
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>
